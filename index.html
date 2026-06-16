@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>キャリア診断 2026 | 実データで最適な通信会社を比較</title>
+<title>スマとく！| 実データであなたに最適な通信会社を手軽に診断</title>
 <style>
   :root {
     --navy:#1B2A4A;--navy-mid:#243560;--cyan:#00C4CC;--cyan-light:#E0FAFB;
@@ -155,10 +155,10 @@
 </head>
 <body>
 <header>
-  <div class="logo-mark">📡</div>
+  <div class="logo-mark">📱</div>
   <div>
-    <div class="logo-text">キャリア診断 2026</div>
-    <div class="logo-sub">実データで最適な通信会社を計算比較</div>
+    <div class="logo-text">スマとく！</div>
+    <div class="logo-sub">実データであなたに最適な通信会社を手軽に診断</div>
   </div>
 </header>
 <div class="container">
@@ -1247,7 +1247,7 @@ function calcCarrier(plan, d){
 function buildSummary(d, results){
   const top = results[0];
   const saving = d.currentPrice>0 ? d.currentPrice - top.finalPrice : null;
-  let text = `月${d.dataLabel}・家族${d.familyCount}人の条件で${results.length}社を比較しました。`;
+  let text = `月${d.dataLabel}・家族${d.familyCount}人の条件で上位5社を比較しました。`;
   if(saving&&saving>0) text += ` 現在の月額から最大月¥${saving.toLocaleString()}の節約が見込めます。`;
   text += ` 最もおすすめは「${top.name}（${top.planName}）」で、割引後月額¥${top.finalPrice.toLocaleString()}の試算です。`;
   const wifiLabel = WIFI_NAME_MAP[d.homeWifi];
@@ -1340,6 +1340,7 @@ const STORE_URL = {
   'sb_debut':        'https://www.softbank.jp/mobile/special/shop-search/',
   'ymobile':         'https://www.ymobile.jp/shop/',
   'ymobile_senior':  'https://www.ymobile.jp/shop/',
+  'rakuten':  'https://network.mobile.rakuten.co.jp/shop/',
   // オンライン専用（公式サイトへ）
   'ahamo':    'https://ahamo.com/',
   'povo':     'https://povo.jp/',
@@ -1351,7 +1352,7 @@ const STORE_URL = {
 function showResults(d, results, ai){
   document.getElementById('loading-screen').style.display='none';
   document.getElementById('result-screen').style.display='block';
-  document.getElementById('result-sub').textContent=`月${d.dataLabel}・家族${d.familyCount}人・${WIFI_NAME_MAP[d.homeWifi]||'Wi-Fiなし'} の条件で${results.length}社を比較`;
+  document.getElementById('result-sub').textContent=`月${d.dataLabel}・家族${d.familyCount}人・${WIFI_NAME_MAP[d.homeWifi]||'Wi-Fiなし'} の条件で上位5社を比較`;
   document.getElementById('ai-summary-text').textContent = ai?.summary || buildSummary(d, results);
 
   const list=document.getElementById('result-list');list.innerHTML='';
