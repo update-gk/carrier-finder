@@ -77,9 +77,9 @@
   .loading-steps{margin-top:24px;text-align:left;max-width:320px;margin-left:auto;margin-right:auto}
   .loading-step{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted)}
   .loading-step.done{color:var(--navy)}
-  .result-header{text-align:center;padding:16px 0 28px}
-  .result-title{font-size:26px;font-weight:900;color:var(--navy);margin-bottom:6px}
-  .result-sub{font-size:13px;color:var(--muted)}
+  .result-header{text-align:center;padding:22px 24px 26px;background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:20px;margin-bottom:20px}
+  .result-title{font-size:28px;font-weight:900;color:white;margin-bottom:6px;letter-spacing:-0.5px}
+  .result-sub{font-size:13px;color:rgba(255,255,255,0.7)}
   .ai-summary{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:20px;padding:24px;color:white;margin-bottom:20px}
   .ai-label{font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
   .ai-text{font-size:14px;line-height:1.8}
@@ -428,10 +428,6 @@
         <option value="rural">地方・山間部が多い</option>
       </select>
     </div>
-    <div class="field">
-      <label>その他・気になること<span class="label-sub">（任意）</span></label>
-      <textarea id="freetext" rows="3" placeholder="例：海外ローミングをよく使う、学生割引を使いたい、など…"></textarea>
-    </div>
     <div class="step-error" id="err-8">⚠️ 端末購入希望と住んでいる地域を選んでください。</div>
     <div class="error-box" id="error-box">⚠️ 診断中にエラーが発生しました。再度お試しください。</div>
     <div class="nav">
@@ -459,7 +455,7 @@
   <!-- RESULT -->
   <div id="result-screen" style="display:none">
     <div class="result-header">
-      <div class="result-title">診断結果</div>
+      <div class="result-title">🏆 診断結果</div>
       <div class="result-sub" id="result-sub"></div>
     </div>
     <div class="ai-summary" id="ai-summary">
@@ -993,7 +989,7 @@ function gatherData(){
     priorities: sel('priority-grid'),
     device: sel('device-chips')[0]||'',
     region: document.getElementById('region').value,
-    freetext: document.getElementById('freetext').value||''
+    freetext: ''
   };
 }
 
